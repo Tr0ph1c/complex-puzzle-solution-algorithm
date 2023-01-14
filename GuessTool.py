@@ -24,7 +24,7 @@ possibilities = [[0, 1, 2, 3],
 
 intro = '''
 BATCH : runs ITERATION_NUMBER (500) of games and gives statistics of the algorithm's performance at the end.\n
-CUSTOM: asks the user for a certain starting guess and a certain password tp guess and runs a simulation
+CUSTOM: asks the user for a certain starting guess and a certain password to guess and runs a simulation
 of the algorithm guess by guess. (used for testing a certain case)\n
 DEBUG:  runs a singular game and moves through the algorithm guess by guess.\n
 CHEAT:  tries to guess an unknown password and asks for the evaluation to be entered by the user.\n
