@@ -3,7 +3,6 @@ import re
 
 REGEX_FILTER = r'^[0-3]{4}$'
 
-ITERATIONS_NUMBER = 500
 BATCHMODE = 0
 CUSTOMEMODE = 0
 DEBUGMODE = 0
@@ -23,14 +22,13 @@ possibilities = [[0, 1, 2, 3],
 
 
 intro = '''
-BATCH : runs ITERATION_NUMBER (500) of games and gives statistics of the algorithm's performance at the end.\n
+BATCH : runs ALL the possible variations of games.\n
 CUSTOM: asks the user for a certain starting guess and a certain password to guess and runs a simulation
 of the algorithm guess by guess. (used for testing a certain case)\n
 DEBUG:  runs a singular game and moves through the algorithm guess by guess.\n
 CHEAT:  tries to guess an unknown password and asks for the evaluation to be entered by the user.\n
 '''
 def UI():
-    global ITERATIONS_NUMBER
     global BATCHMODE
     global CUSTOMEMODE
     global DEBUGMODE
@@ -54,8 +52,8 @@ def entry():
     if BATCHMODE:
         i = 1
         counts = []
-        while i <= ITERATIONS_NUMBER:
-            reset()
+        while i <= 256:
+            reset(i - 1)
             count = main()
             print(f"--- DONE ITERATION {i} : {count} tries ---")
             counts.append(count)
@@ -84,15 +82,18 @@ def entry():
         cheatMode()
     input('DONE, RETURNING TO MAIN MENU...')
 
-def reset():
+def reset(iteration = 0):
     global password
     global possibilities
     global truevals
     global choices
     global pastguess
 
-    for i in range(4): #random password
-        password[i] = random.randint(0,3)
+    if (not BATCHMODE):
+        for i in range(4): #random password
+            password[i] = random.randint(0,3)
+    else:
+        password = iterToPassword(iteration, 4)
 
     possibilities = [[0, 1, 2, 3],
                      [0, 1, 2, 3],
@@ -256,6 +257,24 @@ def choose(slot):
         return possibilities[slot][random.randrange(0,len(possibilities[slot]))]
     else:
         return choices[slot]
+
+def iterToPassword(iterations, passLength):
+    i = iterations
+    password = [0] * passLength
+
+    while i != 0:
+        password[passLength - 1] += 1
+        recursiveCheck(password, passLength - 1)
+        i -= 1
+
+    return password
+
+def recursiveCheck(array, ptr):
+    if ptr == 0: return
+    if array[ptr] == 4:
+        array[ptr] = 0
+        array[ptr - 1] += 1
+        recursiveCheck(array, ptr - 1)
 
 def printPossibs():
     global possibilities
