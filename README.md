@@ -41,10 +41,10 @@ It starts by initializing an array of "possible choices" for each slot.<br>
 [slot4] -> [0, 1, 2, 3]
 </pre><br>
 Firstly, it makes a totally random first guess. Then based on the feedback it does one of the following things on each slot:<br>
-_If the slot's guess is wrong, it removes the guess from the possibilities array of all slots._
-_If the slot's guess is right, it ignores the slot for the rest of the evaluation._
-_If the slot's guess is right but not in the current slot, it removes the guess from the current slot's possibilities array
-and for the next guess, uses this guess in the first slot with this number in its possibilities array._
+_If the slot's guess is wrong, it removes the guess from the possibilities array of all slots._                             <br>
+_If the slot's guess is right, it ignores the slot for the rest of the evaluation._                                         <br>
+_If the slot's guess is right but not in the current slot, it removes the guess from the current slot's possibilities array <br>
+and for the next guess, uses this guess in the first slot with this number in its possibilities array._                     <br>
 
 _**I will hopefully upload an illustration for this process to make it a bit more clear.**_
 
