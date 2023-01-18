@@ -52,10 +52,12 @@ _**I will hopefully upload an illustration for this process to make it a bit mor
 ## HOW TO USE
 ======================================
 
+_I noticed that there is always a finite number of possible games so I made batch mode to try all those possibilities._
+_Which, in my opinion, makes more sense since it tests all possible cases._
+
 In the integrated interface, you can choose one of 4 modes:<br>
 <pre>
-BATCH : runs ITERATION_NUMBER (500 by default) of games and gives statistics of the algorithm's performance at the end.
-You can change the number of iterations from inside of the file.
+BATCH : runs ALL the possible variations of games
 CUSTOM: asks the user for a certain starting guess and a certain password to guess and runs a simulation
 of the algorithm guess by guess. (used for testing a certain case)
 DEBUG:  runs a singular game and moves through the algorithm guess by guess.
