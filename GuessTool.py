@@ -117,6 +117,8 @@ def cheatMode():
         print(f'Guess:  {guess}\n')
         inpTV = re.search(REGEX_FILTER, input('Please enter the evaluation of the guess (i.e. 0021):\n'))
         if not inpTV: input('Invalid Input(s)'); continue
+        for i in range(4):
+            truevals[i] = int(inpTV.group()[i])
         if (sum(truevals) == 8): break # once all values in truevals are 2
         if catchError(): # Repeating Guesses Handling
             print('Repition!')
@@ -209,10 +211,10 @@ def evalPossibilities():
                     p.remove(guess[i])
             except ValueError:
                 pass
-        #IF 1, complex beyong comprehension
+        #IF 1, dont remove from other slots' possiblities AND remove the guess from the current slot
         elif truevals[i] == 1:
             confirmedvalues.append(guess[i])
-            try: 
+            try:
                 possibilities[i].remove(guess[i]) 
             except ValueError: pass
         #IF 2, block choosing
