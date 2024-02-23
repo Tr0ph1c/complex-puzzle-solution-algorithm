@@ -57,11 +57,11 @@ _Which, in my opinion, makes more sense since it tests all possible cases._
 
 In the integrated interface, you can choose one of 4 modes:<br>
 <pre>
-BATCH : runs ALL the possible variations of games
+BATCH : runs ALL the possible variations of the game.
 CUSTOM: asks the user for a certain starting guess and a certain password to guess and runs a simulation
-of the algorithm guess by guess. (used for testing a certain case)
-DEBUG:  runs a singular game and moves through the algorithm guess by guess.
-CHEAT:  tries to guess an unknown password and asks for the evaluation to be entered by the user.
+of the algorithm guess by guess. (used for testing a certain case).
+DEBUG:  runs a singular iteration of the game and moves through the algorithm guess by guess.
+CHEAT:  tries to guess a password made up by the user and asks for the evaluation to be entered by the user.
 </pre>
 
 _The inputs use the regex filter **^[0-3]{4}$** if you are interested_
